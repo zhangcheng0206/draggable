@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	section{width:260px;height:550px;background-color: #000;}
+	img{margin-top:30px;display: none;display: block;}
+	</style>
+</head>
+<body>
+	<section>
+		<img src="code/images/computer.png" alt="">
+		<img src="code/images/cssdoc.png" alt="">
+		<img src="code/images/vide-item.png" alt="">
+		<img src="code/images/oneDrive.png" alt="">
+		<img src="code/images/rubbsh.png" alt="">
+	</section>
+	<script>
+		var o=document.getElementsByTagName('img');
+		localStorage.setItem('vvv',o);
+		console.log(o)
+		for(var i=0;i<4;i++){
+				o[i].index=i;
+				o[i].ondragstart=function(ev){
+					
+					ev.dataTransfer.setData('mark',this.index)
+			}
+		}
+		o[4].ondragover=function(){
+
+			return false;
+		}
+
+		o[4].ondrop=function(ev){
+			
+			var get=ev.dataTransfer.getData('mark');
+		o[get].style.display='none';
+		
+		}
+		
+	</script>
+</body>
+</html>
